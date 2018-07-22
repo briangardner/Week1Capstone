@@ -76,8 +76,15 @@ namespace Week1Capstone
                 indexToMove = 1;
             }
             var leftPart = word.Substring(0, indexToMove );
-            var rightPart = word.Substring(indexToMove);
-            return rightPart + leftPart + "ay";
+            var rightPart = word.Substring(indexToMove).ToCharArray();
+            for (int i = 0; i < leftPart.Length; ++i)
+            {
+                if (char.IsUpper(leftPart[i]))
+                {
+                    rightPart[i] = char.ToUpper(rightPart[i]);
+                }
+            }
+            return new string(rightPart) + leftPart.ToLower() + "ay";
         }
 
         private static int GetIndexOfFirstVowel(string input)
